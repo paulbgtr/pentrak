@@ -5,6 +5,12 @@
       <input
         type="email"
         required
+        placeholder="Your Username"
+        class="w-full max-w-xs input input-bordered"
+      />
+      <input
+        type="email"
+        required
         placeholder="Your Email"
         class="w-full max-w-xs input input-bordered"
       />
