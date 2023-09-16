@@ -66,7 +66,9 @@
 <section>
   <h2 class="mb-3 text-2xl font-bold">🔥 Trending</h2>
 
-  <div class="grid grid-cols-5 gap-3">
+  <div
+    class="grid gap-3 gid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+  >
     {#each trendingBooks as book}
       <Card
         title={book.title}
@@ -80,7 +82,9 @@
 <section class="mt-3">
   <h2 class="mb-3 text-2xl font-bold">🌱 New Books</h2>
 
-  <div class="grid grid-cols-5 gap-3">
+  <div
+    class="grid gap-3 gid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+  >
     {#each newBooks as book}
       <Card
         title={book.title}
