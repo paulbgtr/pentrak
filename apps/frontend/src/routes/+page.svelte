@@ -63,7 +63,7 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="grid grid-cols-4 divide-x">
+<div class="grid lg:grid-cols-4 lg:divide-x">
   <section class="col-span-3">
     <div>
       <h2 class="mb-3 text-2xl font-bold">🔥 Trending</h2>
@@ -92,7 +92,7 @@
     </div>
   </section>
   <section class="px-10">
-    <ul class="w-56 menu bg-base-100 rounded-box">
+    <ul class="hidden w-56 lg:menu bg-base-100 rounded-box">
       <h2 class="mb-3 text-xl font-bold">Popular Genres</h2>
       <li><a>Fiction</a></li>
       <li><a>Non-Fiction</a></li>
