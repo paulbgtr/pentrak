@@ -91,5 +91,14 @@
       {/each}
     </div>
   </section>
-  <section class="px-10" />
+  <section class="px-10">
+    <ul class="w-56 menu bg-base-100 rounded-box">
+      <h2 class="mb-3 text-xl font-bold">Popular Genres</h2>
+      <li><a>Fiction</a></li>
+      <li><a>Non-Fiction</a></li>
+      <li><a>Science Fiction</a></li>
+      <li><a>Fantasy</a></li>
+      <li><a>Mystery</a></li>
+    </ul>
+  </section>
 </div>
