@@ -32,7 +32,9 @@
         </li>
       </ul>
     </div>
-    <a class="text-xl normal-case btn btn-ghost">daisyUI</a>
+    <a href="/" class="text-xl normal-case btn btn-ghost">
+      <span><span class="text-primary">pen</span>trak</span></a
+    >
   </div>
   <div class="gap-2 navbar-end">
     <a href="/signin" class="btn btn-primary btn-outline">Sign In</a>
