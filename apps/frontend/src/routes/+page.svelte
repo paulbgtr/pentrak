@@ -63,34 +63,33 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-  <h2 class="mb-3 text-2xl font-bold">🔥 Trending</h2>
+<div class="grid grid-cols-4 divide-x">
+  <section class="col-span-3">
+    <div>
+      <h2 class="mb-3 text-2xl font-bold">🔥 Trending</h2>
 
-  <div
-    class="grid gap-3 gid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-  >
-    {#each trendingBooks as book}
-      <Card
-        title={book.title}
-        description={book.description}
-        link={book.link}
-      />
-    {/each}
-  </div>
-</section>
+      <div>
+        {#each trendingBooks as book}
+          <Card
+            title={book.title}
+            description={book.description}
+            link={book.link}
+          />
+        {/each}
+      </div>
+    </div>
 
-<section class="mt-3">
-  <h2 class="mb-3 text-2xl font-bold">🌱 New Books</h2>
+    <div class="mt-3">
+      <h2 class="mb-3 text-2xl font-bold">🌱 New</h2>
 
-  <div
-    class="grid gap-3 gid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-  >
-    {#each newBooks as book}
-      <Card
-        title={book.title}
-        description={book.description}
-        link={book.link}
-      />
-    {/each}
-  </div>
-</section>
+      {#each newBooks as book}
+        <Card
+          title={book.title}
+          description={book.description}
+          link={book.link}
+        />
+      {/each}
+    </div>
+  </section>
+  <section class="px-10" />
+</div>
