@@ -1,5 +1,5 @@
 <script>
-  import Card from "../components/Card.svelte";
+  import Card from "../pageComponents/index/Card.svelte";
 
   const trendingBooks = [
     {
