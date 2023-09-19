@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Upvote from "./Upvote/Upvote.svelte";
+  import Upvote from "../../components/Upvote/Upvote.svelte";
 
   export let title: string;
   export let description: string;
