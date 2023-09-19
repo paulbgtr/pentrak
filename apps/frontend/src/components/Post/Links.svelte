@@ -9,7 +9,7 @@
     if (linkName === "" && linkLink === "") return;
 
     book.update((b) => {
-      b.links.push({ name: linkName, link: linkLink });
+      b.links = [{ name: linkName, link: linkLink }, ...b.links];
       return b;
     });
   };
