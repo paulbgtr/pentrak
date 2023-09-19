@@ -46,7 +46,7 @@
       placeholder="Link"
       class="w-full join-item input input-bordered"
     />
-    <button on:click={() => addLink()} class="btn btn-primary join-item"
+    <button on:click={() => addLink()} class="btn btn-neutral join-item"
       >Add</button
     >
   </div>
