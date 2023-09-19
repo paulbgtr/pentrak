@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { book } from "../../store/book";
-  import type { Link } from "../../types/Link";
+  import { book } from "../../../store/book";
+  import type { Link } from "../../../types/Link";
 
   let linkName: string = "";
   let linkLink: string = "";
