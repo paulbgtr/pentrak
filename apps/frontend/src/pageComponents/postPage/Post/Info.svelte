@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { book } from "../../store/book";
+  import { book } from "../../../store/book";
 </script>
 
 <section class="mt-3">
