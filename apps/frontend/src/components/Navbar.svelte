@@ -1,3 +1,7 @@
+<script lang="ts">
+  export let isLogged: boolean;
+</script>
+
 <div class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
@@ -37,8 +41,11 @@
     >
   </div>
   <div class="gap-2 navbar-end">
-    <a class="no-underline link link-primary" href="/post">Post Book</a>
-    <a href="/signin" class="btn btn-primary btn-outline">Sign In</a>
-    <a href="/signup" class="btn btn-primary">Sign Up</a>
+    {#if isLogged}
+      <a class="no-underline link link-primary" href="/post">Post Book</a>
+    {:else}
+      <a href="/signin" class="btn btn-primary btn-outline">Sign In</a>
+      <a href="/signup" class="btn btn-primary">Sign Up</a>
+    {/if}
   </div>
 </div>
