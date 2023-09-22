@@ -15,7 +15,21 @@ export class BooksController {
 
   @Get()
   async findAll() {
-    return await this.booksService.findAll();
+    try {
+      const books = await this.booksService.findAll();
+
+      if (books.length === 0)
+        throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
+
+      return books;
+    } catch (error) {
+      if (error.status === HttpStatus.NOT_FOUND) throw error;
+
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   @Post()
@@ -23,7 +37,7 @@ export class BooksController {
     try {
       const book = await this.booksService.create(createBookDto);
       return book;
-    } catch (err) {
+    } catch (error) {
       throw new HttpException(
         'Internal Server Error',
         HttpStatus.INTERNAL_SERVER_ERROR,
