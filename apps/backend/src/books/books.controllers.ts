@@ -11,11 +11,6 @@ export class BooksController {
     return await this.booksService.findAll();
   }
 
-  @Get('hello')
-  hello() {
-    return 'Hello World';
-  }
-
   @Post()
   async create(@Body() createBookDto: CreateBookDto) {
     return await this.booksService.create(createBookDto);
