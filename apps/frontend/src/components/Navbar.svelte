@@ -1,5 +1,5 @@
 <script lang="ts">
-  let isLogged: boolean;
+  import { auth } from "../store/auth";
 </script>
 
 <div class="navbar bg-base-100">
@@ -41,7 +41,7 @@
     >
   </div>
   <div class="gap-2 navbar-end">
-    {#if isLogged}
+    {#if $auth.isLogged}
       <a class="no-underline link link-primary" href="/post">Post Book</a>
     {:else}
       <a href="/signin" class="btn btn-primary btn-outline">Sign In</a>
