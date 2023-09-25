@@ -2,19 +2,20 @@
   import { supabase } from "../../utils/supabase";
 
   let isError = false;
+  let isSuccess = false;
 
   const createUser = async (email: string, password: string) => {
     try {
       const { data, error } = await supabase.auth.signUp({
-        email: "",
-        password: "",
+        email,
+        password,
       });
 
       if (error) throw error;
 
-      console.log(data);
+      return data;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
 
@@ -28,7 +29,9 @@
     }
 
     try {
-      await createUser(data.email, data.password);
+      const user = await createUser(data.email, data.password);
+
+      isSuccess = true;
     } catch (error) {
       setTimeout(() => {
         isError = true;
@@ -77,6 +80,13 @@
           <span class="text-center text-red-500"
             >Error: Something unexpected happened while signing up. Please try
             again.</span
+          >
+        </p>
+      {:else if isSuccess}
+        <p>
+          <span class="text-center text-green-500"
+            >Success: You have successfully signed up. Please check your email
+            for a confirmation link.</span
           >
         </p>
       {/if}
