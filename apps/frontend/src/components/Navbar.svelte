@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let isLogged: boolean;
+  let isLogged: boolean;
 </script>
 
 <div class="navbar bg-base-100">
