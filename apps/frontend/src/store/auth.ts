@@ -6,5 +6,5 @@ type Auth = {
 };
 
 export const auth = writable<Auth>({
-  isLogged: (await getUser()) ? true : false,
+  isLogged: Boolean(await getUser()) ? true : false,
 });
