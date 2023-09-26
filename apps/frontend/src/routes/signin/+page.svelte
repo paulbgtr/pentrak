@@ -1,5 +1,8 @@
 <script lang="ts">
   import { supabase } from "../../utils/supabase";
+  import { onMount } from "svelte";
+  import { auth } from "../../store/auth";
+  import { goto } from "$app/navigation";
 
   let isError = false;
   let isSuccess = false;
@@ -9,6 +12,10 @@
       window.location.href = "/";
     }
   }
+
+  onMount(() => {
+    if ($auth.isLogged) goto("/");
+  });
 
   const signIn = async (email: string, password: string) => {
     try {

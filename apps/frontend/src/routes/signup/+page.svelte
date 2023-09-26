@@ -1,8 +1,15 @@
 <script lang="ts">
   import { supabase } from "../../utils/supabase";
+  import { auth } from "../../store/auth";
+  import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
 
   let isError = false;
   let isSuccess = false;
+
+  onMount(() => {
+    if ($auth.isLogged) goto("/");
+  });
 
   const createUser = async (email: string, password: string) => {
     try {
