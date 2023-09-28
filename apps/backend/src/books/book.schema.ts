@@ -21,6 +21,9 @@ export class Book {
   imageUrl: string;
 
   @Prop()
+  status: string;
+
+  @Prop()
   upvotes: number;
 }
 
