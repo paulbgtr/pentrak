@@ -3,11 +3,13 @@ import {
   Get,
   Post,
   Body,
+  Param,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './create-book.dto';
+import { Book } from './book.schema';
 
 @Controller('books')
 export class BooksController {
@@ -30,6 +32,11 @@ export class BooksController {
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Book> {
+    return this.booksService.findOne(id);
   }
 
   @Post()
