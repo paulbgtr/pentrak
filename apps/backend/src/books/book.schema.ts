@@ -24,6 +24,9 @@ export class Book {
   status: string;
 
   @Prop()
+  postedDate: Date;
+
+  @Prop()
   upvotes: number;
 }
 
