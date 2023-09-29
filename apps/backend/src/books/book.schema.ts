@@ -27,6 +27,9 @@ export class Book {
   postedDate: Date;
 
   @Prop()
+  genre: string;
+
+  @Prop()
   upvotes: number;
 }
 
