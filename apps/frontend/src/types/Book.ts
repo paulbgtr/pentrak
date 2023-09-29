@@ -8,5 +8,6 @@ export type Book = {
   imageUrl: string;
   upvotes: number;
   postedDate: Date;
+  genre: string;
   status: string;
 };
