@@ -1,16 +1,5 @@
 import { writable } from "svelte/store";
-import type { Link } from "../types/Link";
-
-type Book = {
-  links: Link[];
-  author: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  upvotes: number;
-  postedDate: Date;
-  status: string;
-};
+import type { Book } from "../types/Book";
 
 export const book = writable<Book>({
   links: [],
