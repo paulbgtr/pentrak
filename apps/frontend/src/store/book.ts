@@ -8,6 +8,7 @@ type Book = {
   description: string;
   imageUrl: string;
   upvotes: number;
+  postedDate: Date;
   status: string;
 };
 
@@ -18,5 +19,6 @@ export const book = writable<Book>({
   description: "",
   imageUrl: "",
   upvotes: 0,
+  postedDate: new Date(),
   status: "Pending",
 });
