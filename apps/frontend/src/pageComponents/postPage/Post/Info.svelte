@@ -23,6 +23,12 @@
     />
     <input
       type="text"
+      bind:value={$book.genre}
+      placeholder="Genre"
+      class="w-full join-item input input-bordered"
+    />
+    <input
+      type="text"
       bind:value={$book.author}
       placeholder="Author"
       class="w-full join-item input input-bordered"

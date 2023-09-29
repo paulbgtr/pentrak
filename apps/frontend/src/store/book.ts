@@ -9,5 +9,6 @@ export const book = writable<Book>({
   imageUrl: "",
   upvotes: 0,
   postedDate: new Date(),
+  genre: "",
   status: "Pending",
 });

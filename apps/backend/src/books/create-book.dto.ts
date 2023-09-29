@@ -5,5 +5,6 @@ export class CreateBookDto {
   description: string;
   status: string;
   postedDate: Date;
+  genre: string;
   upvotes: number;
 }
