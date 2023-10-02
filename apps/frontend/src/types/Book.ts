@@ -1,6 +1,7 @@
 import type { Link } from "./Link";
 
 export type Book = {
+  _id: number;
   links: Link[];
   author: string;
   title: string;
