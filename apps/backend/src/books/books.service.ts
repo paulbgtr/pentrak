@@ -3,6 +3,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Book } from './book.schema';
 import { CreateBookDto } from './create-book.dto';
+import { UpdateBookDto } from './update-book-dto';
 
 @Injectable()
 export class BooksService {
@@ -19,5 +20,11 @@ export class BooksService {
 
   async findOne(id: string): Promise<Book> {
     return this.bookModel.findOne({ _id: id }).exec();
+  }
+
+  async update(id: string, updateBookDto: UpdateBookDto): Promise<Book> {
+    return this.bookModel
+      .findOneAndUpdate({ _id: id }, updateBookDto, { new: true })
+      .exec();
   }
 }

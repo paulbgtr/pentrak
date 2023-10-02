@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Put,
   Post,
   Body,
   Param,
@@ -10,6 +11,7 @@ import {
 import { BooksService } from './books.service';
 import { CreateBookDto } from './create-book.dto';
 import { Book } from './book.schema';
+import { UpdateBookDto } from './update-book-dto';
 
 @Controller('books')
 export class BooksController {
@@ -50,5 +52,13 @@ export class BooksController {
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateBookDto: UpdateBookDto,
+  ): Promise<Book> {
+    return this.booksService.update(id, updateBookDto);
   }
 }
