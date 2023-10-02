@@ -17,11 +17,11 @@
       <section class="px-10">
         <ul class="hidden w-56 lg:menu bg-base-100 rounded-box">
           <h2 class="mb-3 text-xl font-bold">Popular Genres</h2>
-          <li><a>Fiction</a></li>
-          <li><a>Non-Fiction</a></li>
-          <li><a>Science Fiction</a></li>
-          <li><a>Fantasy</a></li>
-          <li><a>Mystery</a></li>
+          <li><a href="/genres/Fiction">Fiction</a></li>
+          <li><a href="/genres/Non-Fiction">Non-Fiction</a></li>
+          <li><a href="/genres/Science-Fiction">Science Fiction</a></li>
+          <li><a href="/genres/Fantasy">Fantasy</a></li>
+          <li><a href="/genres/Mystery">Mystery</a></li>
         </ul>
       </section>
     </main>

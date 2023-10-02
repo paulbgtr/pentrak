@@ -35,11 +35,11 @@
         <li>
           <h5 class="font-bold">Popular Genres</h5>
           <ul class="p-2">
-            <li><a>Fiction</a></li>
-            <li><a>Non-Fiction</a></li>
-            <li><a>Science Fiction</a></li>
-            <li><a>Fantasy</a></li>
-            <li><a>Mystery</a></li>
+            <li><a href="/genres/Fiction">Fiction</a></li>
+            <li><a href="/genres/Non-Fiction">Non-Fiction</a></li>
+            <li><a href="/genres/Science-Fiction">Science Fiction</a></li>
+            <li><a href="/genres/Fantasy">Fantasy</a></li>
+            <li><a href="/genres/Mystery">Mystery</a></li>
           </ul>
         </li>
       </ul>
