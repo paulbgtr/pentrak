@@ -1,6 +1,8 @@
 <script>
   import Upvote from "../../../components/Upvote/Upvote.svelte";
   import BookPage from "../../../pageComponents/index/BookPage.svelte";
+
+  export let data;
 </script>
 
 <BookPage>
@@ -13,23 +15,22 @@
       />
 
       <div class="flex gap-2 mt-5">
-        <button class="btn btn-primary">Amazon</button>
-        <button class="btn btn-primary">Goodreads</button>
+        {#each data.bookData.links as link}
+          <a href={link.link} class="btn btn-primary">{link.name}</a>
+        {/each}
       </div>
     </section>
 
     <section>
       <header>
-        <h1 class="text-2xl font-bold">Book</h1>
-        <h2>Name Surname</h2>
+        <h1 class="text-2xl font-bold">{data.bookData.title}</h1>
+        <h2>{data.bookData.title}</h2>
       </header>
 
       <Upvote />
 
       <p class="max-w-xl mt-3">
-        This is a dummy book description. It is intended to provide a brief
-        overview of the book's content and themes. This description can be
-        replaced with actual book details in the future.
+        {data.bookData.description}
       </p>
     </section>
   </div>
