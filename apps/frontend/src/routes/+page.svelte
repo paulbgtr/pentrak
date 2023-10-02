@@ -42,10 +42,6 @@
   <h2 class="mb-3 text-2xl font-bold">🌱 New</h2>
 
   {#each newBooks as book}
-    <Card
-      title={book.title}
-      description={book.description}
-      link={`/books/${book.title}`}
-    />
+    <Card title={book.title} description={book.description} id={book._id} />
   {/each}
 </div>
