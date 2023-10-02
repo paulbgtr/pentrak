@@ -6,7 +6,7 @@
 </script>
 
 <BookPage>
-  <div slot="book" class="grid justify-center grid-cols-2 mx-auto">
+  <div slot="book" class="grid justify-center grid-cols-3 mx-auto">
     <section>
       <img
         class="w-48 mt-3 rounded-xl"
@@ -21,7 +21,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="px-10 py-5">
       <header>
         <h1 class="text-2xl font-bold">{data.bookData.title}</h1>
         <h2>{data.bookData.title}</h2>
@@ -36,12 +36,10 @@
   </div>
 
   <div slot="comments">
-    <section class="mt-5">
-      <input
-        type="text"
-        placeholder="Type here"
-        class="w-full input input-bordered"
-      />
-    </section>
+    <input
+      type="text"
+      placeholder="Type here"
+      class="w-full input input-bordered"
+    />
   </div>
 </BookPage>
