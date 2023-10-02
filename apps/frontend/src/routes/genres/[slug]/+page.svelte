@@ -2,7 +2,6 @@
   import Card from "../../../pageComponents/index/Card.svelte";
 
   export let data;
-  console.log(data.books.length);
 </script>
 
 {#if data.books.length >= 1}
@@ -10,11 +9,7 @@
 
   <div>
     {#each data.books as book}
-      <Card
-        title={book.title}
-        description={book.description}
-        link={`/books/${book.title}`}
-      />
+      <Card id={book.id} title={book.title} description={book.description} />
     {/each}
   </div>
 {:else}
