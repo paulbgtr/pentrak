@@ -14,7 +14,7 @@
         alt=""
       />
 
-      <div class="flex gap-2 mt-5">
+      <div class="flex gap-2 pt-5 pb-5">
         {#each data.bookData.links as link}
           <a href={link.link} class="btn btn-primary">{link.name}</a>
         {/each}
