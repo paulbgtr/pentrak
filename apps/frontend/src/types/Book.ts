@@ -1,4 +1,5 @@
 import type { Link } from "./Link";
+import type { Comment } from "./Comment";
 
 export type Book = {
   _id: number;
@@ -10,5 +11,6 @@ export type Book = {
   upvotes: number;
   postedDate: Date;
   genre: string;
+  comments: Comment[];
   status: string;
 };
