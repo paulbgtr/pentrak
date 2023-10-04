@@ -30,6 +30,9 @@ export class Book {
   genre: string;
 
   @Prop()
+  comments: object[];
+
+  @Prop()
   upvotes: number;
 }
 
