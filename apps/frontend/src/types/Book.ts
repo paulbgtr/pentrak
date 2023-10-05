@@ -2,7 +2,7 @@ import type { Link } from "./Link";
 import type { Comment } from "./Comment";
 
 export type Book = {
-  _id: number;
+  id: string;
   links: Link[];
   author: string;
   title: string;
