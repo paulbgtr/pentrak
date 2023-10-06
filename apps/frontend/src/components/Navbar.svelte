@@ -67,7 +67,7 @@
               <span class="badge">New</span>
             </a>
           </li>
-          <li><a>Settings</a></li>
+          <li><a href="/my/settings">Settings</a></li>
           <li><button on:click={() => logout()}>Logout</button></li>
         </ul>
       </div>
