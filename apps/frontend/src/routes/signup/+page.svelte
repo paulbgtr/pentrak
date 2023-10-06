@@ -6,6 +6,8 @@
 
   let isError = false;
   let isSuccess = false;
+  let userId: string | undefined = "";
+  let username = "";
 
   onMount(() => {
     if ($auth.isLogged) goto("/");
@@ -20,9 +22,20 @@
 
       if (error) throw error;
 
-      return data;
+      userId = data?.user?.id;
     } catch (error) {
       throw error;
+    }
+  };
+
+  const handlePublicUsers = async () => {
+    const { error } = await supabase
+      .from("users")
+      .insert({ user_id: userId, username });
+
+    if (error) {
+      console.log(error);
+      return;
     }
   };
 
@@ -36,7 +49,8 @@
     }
 
     try {
-      const user = await createUser(data.email, data.password);
+      await createUser(data.email, data.password);
+      await handlePublicUsers();
 
       isSuccess = true;
     } catch (error) {
