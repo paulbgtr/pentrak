@@ -2,6 +2,35 @@
   import { auth } from "../store/auth";
   import { supabase } from "../utils/supabase";
   import { goto } from "$app/navigation";
+  import { getUser } from "../utils/getUser";
+  import { onMount } from "svelte";
+
+  let currentUsername: string;
+
+  const handleSessionUsername = async () => {
+    const user = await getUser();
+
+    if (!user) return;
+
+    const userId = user?.id;
+
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("user_id", userId);
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    const username = data[0]?.username;
+    currentUsername = username;
+  };
+
+  onMount(async () => {
+    await handleSessionUsername();
+  });
 
   const logout = async () => {
     supabase.auth.signOut();
@@ -62,9 +91,8 @@
           class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-            <a class="justify-between">
+            <a href={`/users/${currentUsername}`} class="justify-between">
               Profile
-              <span class="badge">New</span>
             </a>
           </li>
           <li><a href="/my/settings">Settings</a></li>
