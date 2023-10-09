@@ -6,15 +6,16 @@
   import { onMount } from "svelte";
 
   let currentUsername: string;
+  let currentProfilePicture: string;
 
-  const handleSessionUsername = async () => {
+  const getCurrentUserData = async () => {
     const user = await getUser();
 
     if (!user) return;
 
     const userId = user?.id;
 
-    const { data, error } = await supabase
+    const { data: userData, error } = await supabase
       .from("users")
       .select("*")
       .eq("user_id", userId);
@@ -24,7 +25,15 @@
       return;
     }
 
-    const username = data[0]?.username;
+    return userData;
+  };
+
+  const handleSessionUsername = async () => {
+    const userData = await getCurrentUserData();
+
+    if (!userData) return;
+
+    const username = userData[0].username;
     currentUsername = username;
   };
 
