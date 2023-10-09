@@ -37,7 +37,17 @@
     currentUsername = username;
   };
 
+  const handleProfilePicture = async () => {
+    const userData = await getCurrentUserData();
+
+    if (!userData) return;
+
+    const profilePicture = userData[0].image_url;
+    currentProfilePicture = profilePicture;
+  };
+
   onMount(async () => {
+    await handleProfilePicture();
     await handleSessionUsername();
   });
 
@@ -92,7 +102,7 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            <img src={currentProfilePicture} alt={currentUsername} />
           </div>
         </label>
         <ul
