@@ -18,10 +18,12 @@
       <h5>{data.user.headline}</h5>
     </div>
   </section>
-  <section class="mt-5">
-    <h3 class="text-lg font-bold">About</h3>
-    <div class="max-w-xl p-3 mt-1 bg-primary rounded-xl">
-      <p>{data.user.about}</p>
-    </div>
-  </section>
+  {#if data.user.about}
+    <section class="mt-5">
+      <h3 class="text-lg font-bold">About</h3>
+      <div class="max-w-xl p-3 mt-1 bg-primary rounded-xl">
+        <p>{data.user.about}</p>
+      </div>
+    </section>
+  {/if}
 {/if}
