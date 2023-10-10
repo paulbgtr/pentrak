@@ -4,6 +4,7 @@
   import { supabase } from "../../../utils/supabase.js";
   import { onMount } from "svelte";
 
+  let isCurrentUser: boolean;
   let isFollowing: boolean;
 
   const getCurrentUserId = async () => {
@@ -39,6 +40,8 @@
 
   onMount(async () => {
     const currentUserId = await getCurrentUserId();
+
+    isCurrentUser = data.user.id === currentUserId;
 
     if (await isFollowed(data.user.id, currentUserId)) {
       isFollowing = true;
@@ -104,14 +107,16 @@
         </p>
       </div>
     </div>
-    {#if isFollowing}
-      <button on:click={() => handleUnfollow()} class="btn btn-primary">
-        Unfollow
-      </button>
-    {:else}
-      <button on:click={() => handleFollow()} class="btn btn-primary">
-        Follow
-      </button>
+    {#if !isCurrentUser}
+      {#if isFollowing}
+        <button on:click={() => handleUnfollow()} class="btn btn-primary">
+          Unfollow
+        </button>
+      {:else}
+        <button on:click={() => handleFollow()} class="btn btn-primary">
+          Follow
+        </button>
+      {/if}
     {/if}
   </section>
   {#if data.user.about}
