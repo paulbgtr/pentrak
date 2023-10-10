@@ -53,6 +53,18 @@
 
     if (error) console.error(error);
   };
+
+  const handleUnfollow = async () => {
+    const currentUser = await getCurrentUserId();
+
+    const { error } = await supabase
+      .from("follows")
+      .delete()
+      .eq("follower_id", currentUser)
+      .eq("followee_id", data.user.id);
+
+    if (error) console.error(error);
+  };
 </script>
 
 {#if !data.user}
@@ -85,7 +97,9 @@
       </div>
     </div>
     {#if isFollowing}
-      <button class="btn btn-primary">Unfollow</button>
+      <button on:click={() => handleUnfollow()} class="btn btn-primary">
+        Unfollow
+      </button>
     {:else}
       <button on:click={() => handleFollow()} class="btn btn-primary">
         Follow
