@@ -2,6 +2,9 @@
   export let data;
   import { getUser } from "../../../utils/getUser.js";
   import { supabase } from "../../../utils/supabase.js";
+  import { onMount } from "svelte";
+
+  let isFollowing: boolean;
 
   const getCurrentUserId = async () => {
     const user = await getUser();
@@ -22,17 +25,49 @@
     return currentUserId;
   };
 
+  const isFollowed = async (followeeId: string, followerId: string) => {
+    const { data, error } = await supabase.from("follows").select("");
+
+    if (error) console.error(error);
+
+    return data?.length === 0 ? false : true;
+  };
+
+  onMount(async () => {
+    const currentUserId = await getCurrentUserId();
+
+    if (await isFollowed(data.user.id, currentUserId)) {
+      isFollowing = true;
+    } else {
+      isFollowing = false;
+    }
+  });
+
   const handleFollow = async () => {
     const currentUserId = await getCurrentUserId();
 
-    const { data: follows, error } = await supabase.from("follows").insert({
+    const { error } = await supabase.from("follows").insert({
       follower_id: currentUserId,
       followee_id: data.user.id,
     });
 
     if (error) console.error(error);
 
-    console.log(follows);
+    isFollowing = true;
+  };
+
+  const handleUnfollow = async () => {
+    const currentUser = await getCurrentUserId();
+
+    const { error } = await supabase
+      .from("follows")
+      .delete()
+      .eq("follower_id", currentUser)
+      .eq("followee_id", data.user.id);
+
+    if (error) console.error(error);
+
+    isFollowing = false;
   };
 </script>
 
@@ -65,9 +100,15 @@
         </p>
       </div>
     </div>
-    <button on:click={() => handleFollow()} class="btn btn-primary"
-      >Follow</button
-    >
+    {#if isFollowing}
+      <button on:click={() => handleUnfollow()} class="btn btn-primary">
+        Unfollow
+      </button>
+    {:else}
+      <button on:click={() => handleFollow()} class="btn btn-primary">
+        Follow
+      </button>
+    {/if}
   </section>
   {#if data.user.about}
     <section class="mt-5">
