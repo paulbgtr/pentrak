@@ -4,7 +4,7 @@
   import { supabase } from "../../../utils/supabase.js";
   import { onMount } from "svelte";
 
-  let isFollowing = false;
+  let isFollowing: boolean;
 
   const getCurrentUserId = async () => {
     const user = await getUser();
@@ -52,6 +52,8 @@
     });
 
     if (error) console.error(error);
+
+    isFollowing = true;
   };
 
   const handleUnfollow = async () => {
@@ -64,6 +66,8 @@
       .eq("followee_id", data.user.id);
 
     if (error) console.error(error);
+
+    isFollowing = false;
   };
 </script>
 
