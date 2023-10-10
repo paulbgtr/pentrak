@@ -26,7 +26,11 @@
   };
 
   const isFollowed = async (followeeId: string, followerId: string) => {
-    const { data, error } = await supabase.from("follows").select("");
+    const { data, error } = await supabase
+      .from("follows")
+      .select("*")
+      .eq("followee_id", followeeId)
+      .eq("follower_id", followerId);
 
     if (error) console.error(error);
 
