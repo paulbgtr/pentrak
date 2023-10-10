@@ -4,6 +4,7 @@
   import type { Book } from "../types/Book.ts";
 
   let newBooks: Book[] = [];
+  let isLoading = true;
 
   const fetchBooks = async () => {
     const url = "http://localhost:3000/books";
@@ -26,6 +27,7 @@
   const handleNewBooks = async () => {
     const books = await fetchBooks();
     newBooks = books;
+    isLoading = false;
   };
 
   onMount(() => {
@@ -41,7 +43,11 @@
 <div class="mt-3">
   <h2 class="mb-3 text-2xl font-bold">🌱 New</h2>
 
-  {#each newBooks as book}
-    <Card title={book.title} description={book.description} id={book._id} />
-  {/each}
+  {#if isLoading}
+    <span class="loading loading-dots loading-lg" />
+  {:else}
+    {#each newBooks as book}
+      <Card title={book.title} description={book.description} id={book._id} />
+    {/each}
+  {/if}
 </div>
